@@ -1,0 +1,116 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background:url(../img/about-bg.jpeg) no-repeat center center fixed;
+    background-size:cover;
+    font-family: "Courier New", Courier, monospace;
+
+}
+.navbar-brand img {
+    height: 40px;
+}
+
+.navbar-nav .nav-link {
+    margin-right: 1rem;
+    text-decoration: none;
+}
+
+
+
+.nav-ul li a{
+    text-decoration: none;
+    color: aliceblue;
+}
+
+.nav-ul a:hover {color: #3382D1;}
+.cont img{
+    width: 100%;
+
+}
+.img {
+    width: 100%;
+    position: relative;
+}
+.hero{
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+}
+
+.about{
+    background-color: #bae8f0;
+    height: 100vh;
+    color: black;
+    padding: 4rem 0;
+}
+
+footer{
+    bottom: 0;
+    position: relative;
+    text-align: center;
+    padding: 1rem;
+    color: aliceblue;
+    background-color: #151525;
+}
+
+.services{
+    height: 100vh;
+}
+
+/* Contact Section Styles */
+.contact {
+    background-color: #f8f9fa;
+    padding: 4rem 0;
+    color: #333;
+    height: 100vh;
+}
+
+.contact h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+}
+
+.contact p {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+.contact-info {
+    margin-top: 2rem;
+}
+
+.contact-info p {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+.contact .card {
+    border: none;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.contact .form-control {
+    padding: 10px 15px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+.contact .btn-primary {
+    background-color: #3382D1;
+    border: none;
+    padding: 10px;
+    font-size: 1.1rem;
+    border-radius: 5px;
+}
+
+.contact .btn-primary:hover {
+    background-color: #2a6cb3;
+}
