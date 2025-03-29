@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My E-Wallet - Transactions</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row flex-nowrap">
+            <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-dark sidebar" style="height:100vh;">
+                <div class="position-sticky pt-3">
+                    <div class="text-center mb-4">
+                        <img src="https://via.placeholder.com/80" class="rounded-circle" alt="Profile">
+                        <h5 class="text-white mt-2">Dhukuti</h5>
+                        <p class="text-muted">Dhukuti@test.com</p>
+                    </div>
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="/dashboard">
+                                <i class="fas fa-home me-2"></i> Dashboard
+                            </a>
+                        </li>
+                        
+                        <li class="nav-item">
+                            <a class="nav-link" href="/send_money">
+                                <i class="fas fa-paper-plane me-2"></i> Send Money
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/topup">
+                                <i class="fas fa-wallet me-2"></i> Top Up
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/transaction_history">
+                                <i class="fas fa-exchange-alt me-2"></i> Transactions
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/profile">
+                                <i class="fas fa-user me-2"></i> Profile
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="/chatbot">
+                                <i class="fas fa-robot me-2"></i> Chatbot
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/ ">
+                                <i class="fas fa-sign-out-alt me-2"></i> Logout
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </nav>
+
+
+            <main class="col-md-9 col-lg-10 px-md-4">
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <h1 class="h2">Transaction History</h1>
+                </div>
+                <!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7fa;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        form {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            margin-right: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+            width: 250px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #007BFF;
+            color: white;
+        }
+
+        td {
+            background-color: #f9f9f9;
+        }
+
+        .no-transaction-message {
+            text-align: center;
+            color: #888;
+            font-size: 16px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                width: 95%;
+            }
+
+            table {
+                font-size: 12px;
+            }
+
+            input[type="text"] {
+                width: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Enter Phone Number to View Transaction History</h1>
+
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Submit</button>
+        </form>
+
+        {% if transactions %}
+            <h2>Transaction History for {{ phone_number }}:</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Sender</th>
+                        <th>Sender Phone</th>
+                        <th>Receiver</th>
+                        <th>Receiver Phone</th>
+                        <th>Amount Sent</th>
+                        <th>Amount Received</th>
+                        <th>Purpose</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for transaction in transactions %}
+                        <tr>
+                            <td>{{ transaction.sender }}</td>
+                            <td>{{ transaction.sender_phone }}</td>
+                            <td>{{ transaction.receiver }}</td>
+                            <td>{{ transaction.receiver_phone }}</td>
+                            <td>{{ transaction.sent }}</td>
+                            <td>{{ transaction.received }}</td>
+                            <td>{{ transaction.purpose }}</td>
+                            <td>{{ transaction.date }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% elif phone_number %}
+            <p class="no-transaction-message">No transactions found for {{ phone_number }}.</p>
+        {% endif %}
+    </div>
+</body>
+</html>
+                
+            </main>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
+

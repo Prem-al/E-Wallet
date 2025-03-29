@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Voice Transfer</h2>
+<button id="micButton">Hold to Speak</button>
+<p id="status">Say: "Send [amount] to [contact]"</p>
+<div id="result"></div>
+
+<script>
+  const micButton = document.getElementById('micButton');
+  const statusEl = document.getElementById('status');
+  
+  micButton.onmousedown = () => {
+    statusEl.textContent = "Listening...";
+    const recognition = new webkitSpeechRecognition();
+    recognition.lang = 'en-US';
+    
+    recognition.onresult = (e) => {
+      const command = e.results[0][0].transcript;
+      statusEl.textContent = `Processing: "${command}"`;
+      
+      fetch('/voice-transfer/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-CSRFToken': '{{ csrf_token }}',
+        },
+        body: JSON.stringify({ voice_text: command })
+      })
+      .then(response => response.json())
+      .then(data => {
+        document.getElementById('result').innerHTML = 
+          data.success ? 
+            `<p style="color:green">${data.success}</p>` : 
+            `<p style="color:red">Error: ${data.error}</p>`;
+      });
+    };
+    
+    recognition.start();
+  };
+  
+  micButton.onmouseup = () => {
+    statusEl.textContent = 'Press and hold to speak';
+  };
+</script>
+{% endblock %}

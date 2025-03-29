@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.5">
+    <title>Dhukuti</title>
+    <link rel="stylesheet" href="../static/css/nav.css">
+    <link rel="stylesheet" href="../static/css/container.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+        integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+            <div class="container">
+                <a class="navbar-brand d-flex" href="#">
+                    <h1><img src="./static/img/logo.jpg" alt="logo" class="img-fluid" style="height: 40px;">
+                    Dhukuti</h1>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="nav-ul navbar-nav ms-auto " style="font-size: x-large;">
+                        <li class="nav-item">
+                            <a class="nav-link px-5" href=" ">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link px-5" href="#about">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link px-5" href="#services">Services</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link px-5" href="#contact">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container-fluid min-vh-100 d-flex justify-content-start align-items-start mt-5 px-5 fon">
+        <div class="card p-4 w-100" style="max-width: 400px;">
+            {% if messages %}
+            {% for message in messages %}
+            <div style="color: red;">{{ message }}</div> 
+            {% endfor %}
+            {% endif %}
+            <form method="post">
+                {% csrf_token %}
+                <div class="mb-3 fs-3">
+                    <label for="Phone" class="form-label " style="font-family:Roboto;">Phone</label>
+                    <input type="tel" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp "
+                        name="phone">
+                </div>
+                <div class="mb-3 fs-3">
+                    <label for="InputPassword1" class="form-label" style="font-family:Roboto;">Password</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1" name="password">
+                </div>
+                <button type="submit" class="btn btn-primary w-100 fs-3" style="font-family:Roboto;">Log in</button>
+
+                <div class="py-2 fs-5 text-center">
+                    <a href="#" class="text-decoration-none">Don't have an account? Register</a>
+                </div>
+            </form>
+        </div>
+    </div>
+    </div>
+    <div class="about p-5" id="about">
+        <h3>ABOUT US</h3>
+        <div class="row p-4 " style="font-size: x-large; margin-left: 50px; margin-right: 50px;">
+            <h3>What is Dhukuti?</h3>
+            <p>Virtual wallet is a web platform or system where user will be able to
+                maintain his wallet and he will be able to use his wallet money to recharge his
+                mobile and can even transfer funds/wallet balance to other users. User will also be able
+                to add money to wallet through debit card.</p>
+            <div class="card w-25 mx-auto py-2 my-3 text-black rounded-5" style="background-color: #F2D3DB;">
+                <div class="card-body">
+                    <h5 class="card-title">How do I Recharge?</h5>
+                    <p class="card-text">
+                    <ul>
+                        <li>Register/Login to your account.</li>
+                        <li>Click on Recharge.</li>
+                        <li>Enter the necessary details.</li>
+                        <li>Make payment.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card w-25 mx-auto py-2 my-3 text-black rounded-5" style="background-color: #c5f3d3;">
+                <div class="card-body">
+                    <h5 class="card-title">What Do I Transfer Balance To Other User?</h5>
+                    <p class="card-text">
+                    <ul>
+                        <li>Login to your account.</li>
+                        <li>Click on Money Transfer</li>
+                        <li>Enter the mobile number(whom you would like to transfer).</li>
+                        <li>Enter the amount.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card w-25 mx-auto py-2 my-3 text-black rounded-5 " style="background-color: #67CEE4;">
+                <div class="card-body">
+                    <h5 class="card-title">We promise:</h5>
+                    <p class="card-text">
+                    <ul>
+                        <li>An easy and instant recharging process</li>
+                        <li>A hassle-free online experience</li>
+                        <li>A safe and secure payment process </li>
+                        <li>Best discounts available in the market</li>
+                    </ul>
+
+                </div>
+            </div>
+
+
+            <p>After all, you know it's a smart thing to do! </p>
+        </div>
+    </div>
+    </div>
+    <div class="services" id="services">
+        <div class="text-1 text-center py-5 ">
+            <div class="card w-25 mx-auto py-2 my-3 text-black rounded-5" style="background-color: #F2D3DB;">
+                <div class="card-body p-4">
+                    <h1 class="card-title">Our Features</h1>
+                </div>
+            </div>
+        </div>
+
+        <div class="d-flex mx-5">
+            <div class="card w-25 mx-auto py-2 my-3 text-black rounded-5" style="background-color: #F2D3DB;">
+                <div class="card-body p-4">
+                    <h5 class="card-title">Instant Transfers</h5>
+                    <p class="card-text">Send and receive money instantly with just a few taps.</p>
+                </div>
+            </div>
+            <div class="card w-25 mx-auto py-2 my-3 text-black rounded-5" style="background-color: #F2D3DB;">
+                <div class="card-body p-4">
+                    <h5 class="card-title">Lorem, ipsum.</h5>
+                    <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, accusamus?</p>
+                </div>
+            </div>
+            <div class="card w-25 mx-auto py-2 my-3 text-black rounded-5" style="background-color: #F2D3DB;">
+                <div class="card-body p-4">
+                    <h5 class="card-title">Lorem, its me</h5>
+                    <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat, nihil!</p>
+                </div>
+            </div>
+        </div>
+        <div class="d-flex mx-5 ">
+            <div class="card w-25 mx-auto py-2 my-3 text-black rounded-5" style="background-color: #F2D3DB;">
+                <div class="card-body p-4">
+                    <h5 class="card-title">Instant Transfers</h5>
+                    <p class="card-text">Send and receive money instantly with just a few taps.</p>
+                </div>
+            </div>
+            <div class="card w-25 mx-auto py-2 my-3 text-black rounded-5" style="background-color: #F2D3DB;">
+                <div class="card-body p-4">
+                    <h5 class="card-title">Instant Transfers</h5>
+                    <p class="card-text ">Send and receive money instantly with just a few taps.</p>
+                </div>
+            </div>
+            <div class="card w-25 mx-auto py-2 my-3 text-black rounded-5" style="background-color: #F2D3DB;">
+                <div class="card-body p-4">
+                    <h5 class="card-title">Instant Transfers</h5>
+                    <p class="card-text">Send and receive money instantly with just a few taps.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </div>
+
+    <!-- Contact Section -->
+    <div class="contact" id="contact">
+        <div class="container py-5">
+            <div class="row">
+                <div class="col-md-6">
+                    <h2 class="mb-4">Get in touch with us</h2>
+                    <p class="mb-4">Contact us for more details about our services.</p>
+                    <div class="contact-info">
+                        <p class="mb-2">Dhukuti@hellocom</p>
+                        <p>9840559633</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card p-4">
+                        <form>
+                            <div class="mb-3">
+                                <label for="name" class="form-label">Name</label>
+                                <input type="text" class="form-control" id="name" placeholder="Your name here">
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="email" placeholder="Your email here">
+                            </div>
+                            <div class="mb-3">
+                                <label for="message" class="form-label">Message</label>
+                                <textarea class="form-control" id="message" rows="3"
+                                    placeholder="Your message here"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100">Send message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="rights">
+            <p>&copy; ALL RIGHTS RESERVED,  2025 Dhukuti</p>
+        </div>
+    </footer>
+</body>
+
+</html>

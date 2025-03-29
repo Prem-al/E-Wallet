@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Scanner</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <h1>QR Code Scanner</h1>
+    <button id="scanBtn">Start Scanning</button>
+    <p id="result"></p>
+
+    <script>
+        $(document).ready(function () {
+            $("#scanBtn").click(function () {
+                $.ajax({
+                    url: "/scan_qr/",
+                    type: "GET",
+                    success: function (response) {
+                        $("#result").text("QR Code Data: " + response.qr_data);
+                    },
+                    error: function (xhr) {
+                        $("#result").text("Error: " + xhr.responseJSON.error);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
